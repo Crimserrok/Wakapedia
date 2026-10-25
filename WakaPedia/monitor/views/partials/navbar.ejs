@@ -1,0 +1,35 @@
+<nav class="side-nav">
+    <div class="nav-bar"></div>
+    <div class="nav-menu">
+        <div class="nav-title">
+            <strong><%= currentUser ? currentUser.name : 'Guest' %></strong>
+            <br>
+            เมนู
+        </div>
+
+        <a href="/" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-text">หน้าแรก</span>
+        </a>
+        <a href="/profile" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span class="nav-text">ข้อมูลผู้ใช้</span>
+        </a>
+        <a href="/list" class="nav-item">
+            <span class="nav-icon">📄</span>
+            <span class="nav-text">รายการ</span>
+        </a>
+
+        <% if (currentUser) { %>
+            <a href="/logout" class="nav-item">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">ออกจากระบบ</span>
+            </a>
+        <% } else { %>
+            <a href="/login" class="nav-item">
+                <span class="nav-icon">🔑</span>
+                <span class="nav-text">เข้าสู่ระบบ</span>
+            </a>
+        <% } %>
+    </div>
+</nav>

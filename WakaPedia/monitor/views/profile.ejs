@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: 'โปรไฟล์', bootstrap: true, css: ['nav_makeup.css', 'global_makeup.css', 'view_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="head-p">
+        <h2>โปรไฟล์</h2>
+    </div>
+
+    <main class="container">
+        <div>
+            <h1>
+                ชื่อ: <%= currentUser.name %><br>
+                บัญชี: <%= currentUser.mail %>
+                <br>
+                <a href="/account/delete" class="btn btn-outline-danger">ลบบัญชีของฉัน</a>
+            </h1>
+        </div>
+
+        <div class="p-4" id="comments">
+            <% comments.forEach(function (c) { %>
+                <div class="comment-box" style="width: 330px;">
+                    <strong><%= c.by ? c.by.name : 'ไม่ระบุ' %></strong>
+                    <small style="color:#888;"> — <%= formatDate(c.createdAt) %></small>
+                    <p><%- nl2br(c.cont) %></p>
+                    <% if (c.imgSrc) { %>
+                        <img src="/uploads/comments/<%= c.imgSrc %>">
+                    <% } %>
+                    <form action="/comment/<%= c._id %>/delete" method="POST" style="display:inline"
+                          onsubmit="return confirm('ยืนยันการลบ?')">
+                        <button type="submit" style="border:0;background:none;cursor:pointer;color: crimson;"><i class="bi bi-trash-fill"></i></button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
+</html>

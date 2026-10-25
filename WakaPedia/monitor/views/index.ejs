@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: 'Waka Pedia', bootstrap: true, css: ['global_makeup.css', 'nav_makeup.css'] }) %>
+    <style>
+        .card-img-top { transition: transform 0.3s ease; }
+        .card:hover .card-img-top { transform: scale(1.05); }
+        .card { overflow: hidden; }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="head-p">
+        <h2>Waka Pedia</h2>
+
+        <div class="search-f">
+            <form action="/" method="GET">
+                <div class="input-group">
+                    <% if (search) { %>
+                        <a href="/" class="btn btn-outline-secondary">ล้างค่า</a>
+                    <% } %>
+                    <input type="text" name="q" class="form-control" placeholder="ค้นหา..." value="<%= search %>">
+                    <button class="btn btn-success" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> ค้นหา
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <main class="container py-4">
+        <h2 class="mb-3">
+            <%= search ? 'ผลการค้นหา "' + search + '" (' + articles.length + ' รายการ)' : 'สถานที่แนะนำ' %>
+        </h2>
+
+        <% if (articles.length === 0) { %>
+            <div class="alert alert-secondary">ไม่พบสถานที่ที่ตรงกับคำค้นหา</div>
+        <% } else { %>
+            <div class="row g-4">
+                <% articles.forEach(function (art) { %>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="/article/<%= encodeURIComponent(art.slug) %>" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm">
+                                <% if (art.thumb) { %>
+                                    <img src="/uploads/articles/<%= art.thumb %>" class="card-img-top" style="height:200px; object-fit:cover;">
+                                <% } else { %>
+                                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center text-white" style="height:200px;">
+                                        ไม่มีรูปภาพ
+                                    </div>
+                                <% } %>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= art.title %></h5>
+                                    <p class="card-text text-muted"><%= art.excerpt %></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+
+        <div class="text-center mt-4">
+            <a href="/list" class="btn btn-outline-secondary btn-lg">ดูสถานที่ทั้งหมด</a>
+        </div>
+    </main>
+</body>
+</html>

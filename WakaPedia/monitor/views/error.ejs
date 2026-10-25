@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: 'เกิดข้อผิดพลาด', css: ['nav_makeup.css', 'global_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <div class="head-p"><h2>เกิดข้อผิดพลาด</h2></div>
+    <main class="container">
+        <p><%= message %></p>
+        <a href="/">กลับหน้าแรก</a>
+    </main>
+</body>
+</html>

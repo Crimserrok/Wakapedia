@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('../partials/head', { title: 'แก้ไขข้อมูล', css: ['nav_makeup.css', 'global_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="head-p"><h2>แก้ไขบทความ</h2></div>
+
+    <main class="container">
+        <div class="p-4">
+            <% if (error) { %><p style="color:red;"><%= error %></p><% } %>
+
+            <form action="/admin/articles/<%= article._id %>/edit" method="POST">
+                <label>ชื่อเรื่อง</label><br>
+                <input type="text" name="title" value="<%= article.title %>" required><br><br>
+
+                <label>ละติจูด (Latitude)</label><br>
+                <input type="text" name="pos_y" value="<%= article.posY %>" placeholder="Y" required><br><br>
+
+                <label>ลองจิจูด (Longitude)</label><br>
+                <input type="text" name="pos_x" value="<%= article.posX %>" placeholder="X" required><br><br>
+
+                <label>เนื้อหา</label><br>
+                <textarea name="cont" rows="15" style="width:40%" required><%= article.cont %></textarea><br><br>
+
+                <button type="submit">บันทึกการแก้ไข</button>
+            </form>
+
+            <hr>
+            <h3>แกลเลอรีรูปภาพ</h3>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
+                <% gallery.forEach(function (img) { %>
+                    <div style="position:relative;">
+                        <img src="/uploads/articles/<%= img.src %>" style="width:150px; height:100px; object-fit:cover; border-radius:6px;">
+                        <form action="/admin/articles/<%= article._id %>/images/<%= img._id %>/delete" method="POST"
+                              onsubmit="return confirm('ลบรูปนี้?')" style="position:absolute; top:5px; right:5px;">
+                            <button type="submit" style="background:red; color:white; border:0; padding:2px 8px; border-radius:50%; cursor:pointer;">×</button>
+                        </form>
+                    </div>
+                <% }) %>
+            </div>
+
+            <form action="/admin/articles/<%= article._id %>/images" method="POST" enctype="multipart/form-data">
+                <input type="file" name="gallery_img" accept="image/jpeg,image/png,image/webp" required>
+                <button type="submit">เพิ่มรูปเข้าแกลเลอรี</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+
+.btn-add {
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 6px;             
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;                        
+    transition: background-color 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #f0f0f0;      
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Kanit', sans-serif;
+}
+
+.custom-table th {
+    background-color: #f8f9fa;
+    color: #333333;
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.custom-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f3f5;
+    color: #495057;
+    vertical-align: middle;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease;
+}
+
+.article-link {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.article-link:hover {
+    text-decoration: underline;
+}
+
+.action-col {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin: 0 2px;
+}
+
+.btn-edit {
+    color: #0d6efd;
+    background-color: #e7f1ff;
+}
+
+.btn-edit:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+.btn-delete {
+    color: #dc3545;
+    background-color: #ffe8e8;
+    border: 0;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: 0;
+}

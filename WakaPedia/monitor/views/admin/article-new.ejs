@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('../partials/head', { title: 'เพิ่มบทความ', css: ['nav_makeup.css', 'global_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="head-p"><h2>เพิ่มบทความใหม่</h2></div>
+
+    <main class="container">
+        <div class="p-4">
+            <% if (error) { %><p style="color:red;"><%= error %></p><% } %>
+
+            <form action="/admin/articles/new" method="POST">
+                <label>ชื่อเรื่อง</label><br>
+                <input type="text" name="title" value="<%= form.title || '' %>" required><br><br>
+
+                <label>ละติจูด (Latitude)</label><br>
+                <input type="text" name="pos_y" placeholder="Y" value="<%= form.pos_y || '' %>" required><br><br>
+
+                <label>ลองจิจูด (Longitude)</label><br>
+                <input type="text" name="pos_x" placeholder="X" value="<%= form.pos_x || '' %>" required><br><br>
+
+                <label>เนื้อหา</label><br>
+                <textarea name="cont" rows="15" style="width:40%" required><%= form.cont || '' %></textarea><br><br>
+
+                <button type="submit">บันทึก</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

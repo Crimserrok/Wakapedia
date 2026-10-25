@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: article.title, leaflet: true, css: ['nav_makeup.css', 'global_makeup.css', 'view_makeup.css'] }) %>
+    <style>
+        .cont-contain { display: flex; gap: 5px; flex-direction: row; }
+        .cont-contain .map { width: 50%; }
+        .cont-contain .cont { width: 50%; }
+        .head-p1 { background-color: chartreuse; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="head-p1">
+        <h1><%= article.title %></h1>
+        <p>โดย: <%= article.writeBy ? article.writeBy.name : 'ไม่ระบุ' %></p>
+    </div>
+
+    <main class="container">
+        <div class="p-4">
+            <% if (gallery.length > 0) { %>
+                <div class="slideshow">
+                    <% gallery.forEach(function (img, i) { %>
+                        <img src="/uploads/articles/<%= img.src %>" class="<%= i === 0 ? 'active' : '' %>">
+                    <% }) %>
+                    <% if (gallery.length > 1) { %>
+                        <button class="slide-btn slide-prev" onclick="changeSlide(-1)">‹</button>
+                        <button class="slide-btn slide-next" onclick="changeSlide(1)">›</button>
+                    <% } %>
+                </div>
+                <script>
+                    let currentSlide = 0;
+                    const slides = document.querySelectorAll('.slideshow img');
+                    function showSlide(i) {
+                        slides.forEach(s => s.classList.remove('active'));
+                        currentSlide = (i + slides.length) % slides.length;
+                        slides[currentSlide].classList.add('active');
+                    }
+                    function changeSlide(dir) { showSlide(currentSlide + dir); }
+                </script>
+            <% } %>
+            <hr>
+        </div>
+
+        <div class="cont-contain">
+            <div class="cont"><%- nl2br(article.cont) %></div>
+            <div class="map" id="map" style="height: 400px;"></div>
+        </div>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script>
+            var lat = <%- JSON.stringify(article.posY).replace(/</g, '\\u003c') %>;
+            var lng = <%- JSON.stringify(article.posX).replace(/</g, '\\u003c') %>;
+            var title = <%- JSON.stringify(article.title).replace(/</g, '\\u003c') %>;
+            var map = L.map('map').setView([lat, lng], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            var popup = document.createElement('div');
+            popup.textContent = title;
+            L.marker([lat, lng]).addTo(map).bindPopup(popup);
+        </script>
+
+        <div class="p-4" id="comments">
+            <hr>
+            <h2>ความคิดเห็น (<%= comments.length %>)</h2>
+
+            <% if (currentUser) { %>
+                <% if (commentError) { %>
+                    <p style="color:red;"><%= commentError %></p>
+                <% } %>
+                <form action="/article/<%= encodeURIComponent(article.slug) %>/comment" method="POST" enctype="multipart/form-data">
+                    <textarea name="cont" rows="3" style="width:30%" placeholder="แสดงความคิดเห็น..." required></textarea><br><br>
+                    <input type="file" name="comment_img" accept="image/jpeg,image/png,image/webp"><br><br>
+                    <button type="submit">ส่งความคิดเห็น</button>
+                </form>
+            <% } else { %>
+                <p><a href="/login">เข้าสู่ระบบ</a> เพื่อแสดงความคิดเห็น</p>
+            <% } %>
+
+            <br>
+            <% comments.forEach(function (c) { %>
+                <div class="comment-box" style="width: 330px;">
+                    <strong><%= c.by ? c.by.name : 'ไม่ระบุ' %></strong>
+                    <small style="color:#888;"> — <%= formatDate(c.createdAt) %></small>
+                    <p><%- nl2br(c.cont) %></p>
+                    <% if (c.imgSrc) { %>
+                        <img src="/uploads/comments/<%= c.imgSrc %>">
+                    <% } %>
+                    <% if (currentUser && (isAdmin || (c.by && String(c.by._id) === currentUser.id))) { %>
+                        <form action="/comment/<%= c._id %>/delete" method="POST" style="display:inline"
+                              onsubmit="return confirm('ยืนยันการลบ?')">
+                            <button type="submit" style="border:0;background:none;cursor:pointer;color: crimson;"><i class="bi bi-trash-fill"></i></button>
+                        </form>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
+</html>

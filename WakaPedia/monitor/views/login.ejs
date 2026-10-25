@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: 'Login', bootstrap: true, css: ['nav_makeup.css', 'login_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="container">
+        <div class="flex-grow-1 p-4">
+            <% if (info) { %><p style="text-align:center;color:green;"><%= info %></p><% } %>
+            <% if (error) { %><p style="text-align:center;color:red;"><%= error %></p><% } %>
+
+            <form name="form1" action="/login" method="POST">
+                <table border="1" align="center" width="80%">
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" id="log1" name="log1" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" id="log2" name="log2" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="Submit" value="Login" /></td>
+                    </tr>
+                    <tr>
+                        <td><a href="/signin">Signin</a></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

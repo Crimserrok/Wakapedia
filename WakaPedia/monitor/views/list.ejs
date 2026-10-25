@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: 'รายการสถานที่', css: ['global_makeup.css', 'nav_makeup.css', 'list_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="head-p">
+        <h2>รายการสถานที่</h2>
+
+        <% if (isAdmin) { %>
+            <a href="/admin/articles/new">
+                <button type="button" class="btn-add">
+                    <span class="nav-icon">📤</span>
+                    <span class="nav-text">เพิ่มข้อมูล</span>
+                </button>
+            </a>
+        <% } %>
+    </div>
+
+    <main class="container">
+        <div class="p-4">
+            <table class="custom-table">
+                <tr>
+                    <th>ชื่อสถานที่</th>
+                    <th>จัดทำโดย</th>
+                    <% if (isAdmin) { %><th>จัดการ</th><% } %>
+                </tr>
+
+                <% articles.forEach(function (row) { %>
+                    <tr>
+                        <td>
+                            <a href="/article/<%= encodeURIComponent(row.slug) %>" class="article-link"><%= row.title %></a>
+                        </td>
+                        <td><%= row.writeBy ? row.writeBy.name : 'ไม่ระบุ' %></td>
+                        <% if (isAdmin) { %>
+                            <td>
+                                <a href="/admin/articles/<%= row._id %>/edit" class="btn-icon btn-edit">
+                                    <i class="bi bi-pen-fill"></i>
+                                </a> |
+                                <form action="/admin/articles/<%= row._id %>/delete" method="POST" style="display:inline"
+                                      onsubmit="return confirm('ยืนยันการลบ?')">
+                                    <button type="submit" class="btn-icon btn-delete">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        <% } %>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

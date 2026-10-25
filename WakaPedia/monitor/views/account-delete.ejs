@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <%- include('partials/head', { title: 'ลบบัญชี', bootstrap: true, css: ['nav_makeup.css'] }) %>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="container py-5" style="max-width: 500px;">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">⚠️ ลบบัญชีผู้ใช้</h4>
+            </div>
+            <div class="card-body">
+                <p>การลบบัญชีเป็นการดำเนินการ<strong>ที่ไม่สามารถย้อนกลับได้</strong></p>
+                <ul>
+                    <li>ข้อมูลบัญชี (อีเมล, ชื่อผู้ใช้, รหัสผ่าน) จะถูกลบถาวร</li>
+                    <li>บทความ รูปภาพ และคอมเมนต์ที่คุณเคยสร้างไว้ <strong>จะยังคงอยู่บนเว็บไซต์</strong> แต่จะแสดงเป็น "ไม่ระบุ" แทนชื่อคุณ</li>
+                </ul>
+
+                <% if (error) { %>
+                    <div class="alert alert-danger"><%= error %></div>
+                <% } %>
+
+                <form method="POST" action="/account/delete">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">เลือกรูปแบบการจัดการข้อมูลของคุณ:</label>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="delete_mode" id="keepContent" value="keep_content" checked>
+                            <label class="form-check-label" for="keepContent">
+                                <strong>ลบเฉพาะตัวตน:</strong> บัญชีจะถูกลบ แต่บทความและคอมเมนต์ยังคงอยู่บนเว็บ (แสดงชื่อเป็น "ไม่ระบุ")
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="delete_mode" id="deleteAll" value="delete_all">
+                            <label class="form-check-label text-danger" for="deleteAll">
+                                <strong>ลบข้อมูลทั้งหมดถาวร:</strong> ลบบัญชี รวมถึงบทความ รูปภาพ และคอมเมนต์ที่คุณเคยสร้างไว้ออกทั้งหมด
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">กรอกรหัสผ่านของคุณเพื่อยืนยันตัวตน</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">พิมพ์คำว่า <strong>"ลบบัญชี"</strong> เพื่อยืนยัน</label>
+                        <input type="text" name="confirm_text" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100"
+                        onclick="return confirm('คุณแน่ใจหรือไม่ที่จะดำเนินการลบบัญชี? การกระทำนี้ย้อนกลับไม่ได้')">
+                        ลบบัญชีถาวร
+                    </button>
+                    <a href="/profile" class="btn btn-outline-secondary w-100 mt-2">ยกเลิก</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

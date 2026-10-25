@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "mail": "admin",
+  "key": "$2a$10$QPFhzJkOwsVe/6CGknLTg.vLlf3d908P.wVTqweDaVkvutUpo2t9.",
+  "name": "Admin",
+  "type": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d72"
+  },
+  "mail": "testUser01",
+  "key": "$2a$10$EdkDP3pjK9yUpG.fYDFGZ.0Nk6qzFfzZ8wNgQwXZ3hKrGXvscHx22",
+  "name": "test01",
+  "type": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d74"
+  },
+  "mail": "testUser02",
+  "key": "$2a$10$/dZFk74vFZOKL6Om1aY64.bx0utCJme8q2tDAttb/p31CZn3nVovG",
+  "name": "test02",
+  "type": 0,
+  "__v": 0
+}]

@@ -1,0 +1,204 @@
+[{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d80"
+  },
+  "src": "img_6a8dfaedf09e60.26982599.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d76"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T03:28:29.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d82"
+  },
+  "src": "img_6a8dfaf9017840.05838429.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d76"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T03:28:41.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d84"
+  },
+  "src": "img_6a8e4cc6570024.16620964.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d78"
+  },
+  "order": 1,
+  "createdAt": {
+    "$date": "2026-08-26T09:17:42.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d86"
+  },
+  "src": "img_6a8e4cce777249.83156740.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d78"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:17:50.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d88"
+  },
+  "src": "img_6a8e519f84f626.61238330.png",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7c"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:38:23.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d8a"
+  },
+  "src": "img_6a8e51a6707066.01542293.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7c"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:38:30.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d8c"
+  },
+  "src": "img_6a8e51bf8c2e09.21657168.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7a"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:38:55.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d8e"
+  },
+  "src": "img_6a8e51c63539b7.61118635.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7a"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:39:02.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d90"
+  },
+  "src": "img_6a8e51cc1a66a5.10672915.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7a"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:39:08.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf81fc82fc3ff06d56d96"
+  },
+  "src": "img_6a8e5508175306.60702709.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7e"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-08-26T09:52:56.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf898dc2584cb9f329e7e"
+  },
+  "src": "img_1a1731314adf054e81f.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7e"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-10-25T12:39:52.762Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6addf8a4dc2584cb9f329e88"
+  },
+  "src": "img_1a1731344074a21ba89.jpg",
+  "by": {
+    "$oid": "6addf81fc82fc3ff06d56d70"
+  },
+  "article": {
+    "$oid": "6addf81fc82fc3ff06d56d7e"
+  },
+  "order": 0,
+  "createdAt": {
+    "$date": "2026-10-25T12:40:04.885Z"
+  },
+  "__v": 0
+}]
